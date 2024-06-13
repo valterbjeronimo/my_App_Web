@@ -11,7 +11,7 @@ public class ControllerUtilizador {
 
 
 
-    @GetMapping("/")
+    @GetMapping("/test")
     public ResponseEntity getAll(){
         return  new ResponseEntity<>("test", HttpStatus.OK);
     }

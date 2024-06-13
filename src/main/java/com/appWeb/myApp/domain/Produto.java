@@ -20,4 +20,5 @@ public class Produto {
     private String nome;
     private String descricao;
     private double preco;
+    private boolean enStok;
 }
