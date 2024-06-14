@@ -8,13 +8,16 @@ public class ServiceUtilizadorimpl implements IServiceUtilizador {
 
 
     @Override
-    public void inserirutilizador(Utilizador utilizador) {
+    public Utilizador serviceTest() {
 
        Utilizador valter =Utilizador.builder()
                 .nome("valter")
                 .idade(32)
                 .build();
+        return valter;
 
 
     }
+
+
 }
