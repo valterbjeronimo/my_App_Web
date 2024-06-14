@@ -30,7 +30,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/pesquisar")
-    public List<Produto>listar(@RequestParam String nome){
+    public List<Produto>pesquisar(@RequestParam String nome){
         return produtoRepository.findByNomeContainingIgnoreCase(nome);
     }
 }
