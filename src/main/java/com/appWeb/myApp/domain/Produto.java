@@ -21,4 +21,5 @@ public class Produto {
     private String descricao;
     private double preco;
     private boolean enStok;
+    private String imagem;
 }
