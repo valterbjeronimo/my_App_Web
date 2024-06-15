@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,7 +8,14 @@
     <title>MyApp</title>
 </head>
 <body>
-<h1>Valter</h1>
+<h1>Lista de Produtos</h1>
+
+<ul>
+    <li th:each="produtos: ${produtos}">
+        <p th:text="${produtos.nome}"></p>
+
+    </li>
+</ul>
 
 </body>
 </html>

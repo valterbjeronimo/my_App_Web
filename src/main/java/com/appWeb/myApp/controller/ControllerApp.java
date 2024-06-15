@@ -2,26 +2,37 @@ package com.appWeb.myApp.controller;
 
 
 
-import com.appWeb.myApp.domain.Utilizador;
-import com.appWeb.myApp.service.IServiceUtilizador;
+import com.appWeb.myApp.domain.Produto;
+
+import com.appWeb.myApp.service.IserviceProduto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 public class ControllerApp {
 
+
     @Autowired
-    private IServiceUtilizador serviceUtilizador;
+    private IserviceProduto iserviceProduto;
+
+
 
 
 
     @GetMapping("/")
-    public String root(){
-        Utilizador utilizador = serviceUtilizador.serviceTest();
-        System.out.println(utilizador);
+    @PostMapping("/")
+    public String root(Model model){
+        List<Produto> allProducts = iserviceProduto.getAll();
+        model.addAttribute("produtos",allProducts);
+
         return "index";
+
     }
 
     @RequestMapping("/checkout")
