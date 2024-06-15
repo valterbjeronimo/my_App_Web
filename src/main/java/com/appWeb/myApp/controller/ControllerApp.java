@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,8 +36,30 @@ public class ControllerApp {
 
     }
 
+    @GetMapping("/produtos/{id}")
+    public String recuperarProdutos(Model model, @PathVariable("id") Long id){
+
+        Produto produtoById = iserviceProduto.getProdutoById(id);
+
+        model.addAttribute("produto",produtoById);
+        return "cadastrarProdutos";
+
+    }
+
     @RequestMapping("/checkout")
     public String checkout(){
         return "checkout";
+    }
+
+
+    @GetMapping("/produtos/cadastrar")
+    public String cadastrarProdutosTemplates(Model model){
+        return "cadastrarProdutos";
+    }
+
+    @PostMapping("/produtos/cadastrar")
+    public String cadastrarProdutos(Model model, Produto produto){
+        iserviceProduto.cadastrarProduto(produto);
+        return "redirect:/";
     }
 }

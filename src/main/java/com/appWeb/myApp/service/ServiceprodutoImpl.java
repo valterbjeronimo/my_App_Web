@@ -10,12 +10,23 @@ import java.util.List;
 @Service
 public class ServiceprodutoImpl implements IserviceProduto{
 
-   @Autowired
-    ProdutoRepository produtoRepository;
+    @Autowired
+     ProdutoRepository produtoRepository;
 
 
     @Override
     public List<Produto> getAll() {
         return produtoRepository.findAll();
+    }
+
+    @Override
+    public void cadastrarProduto(Produto produto) {
+        produtoRepository.save(produto);
+
+    }
+
+    @Override
+    public Produto getProdutoById(Long id) {
+        return produtoRepository.getReferenceById(id);
     }
 }

@@ -64,9 +64,9 @@
 </div>
 
 
-<h1>Bem Vindo Ao Index</h1>
+<h1 class="text-center">Confira nossas ofertas !</h1>
 
-<h1>Lista de Produtos</h1>
+
 
     <div class="container">
 
@@ -78,7 +78,9 @@
             <div class="card-body">
                 <h5 class="card-title" th:text="${produtos.nome}"></h5>
                 <p class="card-text" th:text="${produtos.descricao}"></p>
-                <a href="#" class="btn btn-primary">Visualizar</a>
+                <p class="card-text" th:text="${produtos.preco}"></p>
+                <a th:href="@{'/produtos/' +${produtos.id}}" class="btn btn-outline-secondary">visualizar</a>
+
             </div>
         </div>
     </div>
