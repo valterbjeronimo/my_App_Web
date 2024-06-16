@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ocorreu um erro na aplicação</title>
+</head>
+<body>
+<div class="container px-4 py-5 bd-callout bd-callout-danger">
+    <p class="card-text" th:text="${message}"></p>
+    <p class="card-text" th:text="${url}"></p>
+</div>
+</body>
+</html>

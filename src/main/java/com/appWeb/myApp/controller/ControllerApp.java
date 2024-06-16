@@ -4,14 +4,14 @@ package com.appWeb.myApp.controller;
 
 import com.appWeb.myApp.domain.Produto;
 
+import com.appWeb.myApp.exception.ProdutoException;
 import com.appWeb.myApp.service.IserviceProduto;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class ControllerApp {
 
 
     @Autowired
-    private IserviceProduto iserviceProduto;
+     IserviceProduto iserviceProduto;
 
 
 
@@ -28,7 +28,7 @@ public class ControllerApp {
 
     @GetMapping("/")
     @PostMapping("/")
-    public String root(Model model){
+    public String root(Model model) throws ProdutoException {
         List<Produto> allProducts = iserviceProduto.getAll();
         model.addAttribute("produtos",allProducts);
 
@@ -62,4 +62,14 @@ public class ControllerApp {
         iserviceProduto.cadastrarProduto(produto);
         return "redirect:/";
     }
+
+    @ExceptionHandler(ProdutoException.class)
+    public ModelAndView handleException(HttpServletRequest request, ProdutoException exception) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("message", exception.getMessage());
+        mav.addObject("url", exception.getUrl());
+        mav.setViewName("error");
+        return mav;
+    }
+
 }
