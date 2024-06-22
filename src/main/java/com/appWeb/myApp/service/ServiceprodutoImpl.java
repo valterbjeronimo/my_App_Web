@@ -4,6 +4,7 @@ import com.appWeb.myApp.domain.Produto;
 import com.appWeb.myApp.exception.ProdutoException;
 import com.appWeb.myApp.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,10 @@ public class ServiceprodutoImpl implements IserviceProduto{
 
     @Autowired
      ProdutoRepository produtoRepository;
+
+
+
+
 
 
     @Override

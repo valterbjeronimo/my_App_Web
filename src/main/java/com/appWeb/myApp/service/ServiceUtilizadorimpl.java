@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -43,5 +44,10 @@ public class ServiceUtilizadorimpl implements IServiceUtilizador {
     @Override
     public Utilizador findByLogin(String login) {
         return utilizadorRepository.findBylogin(login);
+    }
+
+    @Override
+    public List<Utilizador> getAll() {
+        return utilizadorRepository.findAll();
     }
 }
